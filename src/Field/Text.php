@@ -4,6 +4,7 @@ namespace Corcel\Acf\Field;
 
 use Corcel\Acf\FieldInterface;
 use Corcel\Model\Post;
+use Corcel\Concerns\Shortcodes;
 
 /**
  * Class Text.
@@ -12,6 +13,9 @@ use Corcel\Model\Post;
  */
 class Text extends BasicField implements FieldInterface
 {
+
+    use Shortcodes;
+
     /**
      * @var string
      */
@@ -21,8 +25,8 @@ class Text extends BasicField implements FieldInterface
      * @param string $field
      */
     public function process($field)
-    {
-        $this->value = $this->fetchValue($field);
+    {   
+        $this->value = $this->post->stripShortcodes($this->fetchValue($field)); 
     }
 
     /**

@@ -110,11 +110,11 @@ class FieldFactory
             case 'flexible_content':
                 $field = new FlexibleContent($post);
                 break;
-            case 'group':
+            case 'group' : 
                 $field = new Group($post);
                 break;
             case 'google_map':
-                $field = new Group($post);
+                $field = new GoogleMap($post);
                 break;
             default: return null;
         }

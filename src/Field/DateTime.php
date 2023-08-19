@@ -25,7 +25,11 @@ class DateTime extends BasicField implements FieldInterface
     {
         $dateString = $this->fetchValue($fieldName);
         $format = $this->getDateFormatFromString($dateString);
-        $this->date = Carbon::createFromFormat($format, $dateString);
+
+        if($dateString != '')
+          $this->date = Carbon::createFromFormat($format, $dateString);
+        else 
+          return false;
     }
 
     /**
