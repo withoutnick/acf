@@ -26,6 +26,13 @@ class Text extends BasicField implements FieldInterface
      */
     public function process($field)
     {   
+        $value = $this->fetchValue($field);
+
+        if (is_array($value)) {
+            $this->value = $value;
+            return;
+        }
+
         $this->value = $this->post->stripShortcodes($this->fetchValue($field)); 
     }
 
